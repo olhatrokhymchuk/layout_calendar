@@ -26,7 +26,7 @@ body {
   gap: $gap;
   padding: $padding;
   max-width: calc(
-    #{$columns * $size} + (#{$columns - 1} * #{$gap}) + (2 * #{$padding})
+    #{$columns * $size} + (#{$columns - 1} * #{$gap})
   );
   &__day {
     cursor: pointer;
@@ -55,7 +55,7 @@ body {
     }
 
     @each $name, $index in $days {
-      &:first-child {
+      &--start-day-#{$name} &__day:first-child {
         margin-left: ($index) * ($size + $gap);
       }
     }
