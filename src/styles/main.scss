@@ -8,8 +8,8 @@ $days: (
   'thu': 3,
   'fri': 4,
   'sat': 5,
-  'sun': 6
-  ) ;
+  'sun': 6,
+);
 $size: 100px;
 
 body {
@@ -25,12 +25,12 @@ body {
   flex-wrap: wrap;
   gap: $gap;
   padding: $padding;
-  box-sizing: border-box;
-  max-width: calc( #{$columns * $size} + ( #{$columns - 1} * #{$gap}) + (2 * #{$padding}));
+  max-width: calc(
+    #{$columns * $size} + (#{$columns - 1} * #{$gap}) + (2 * #{$padding})
+  );
   &__day {
     cursor: pointer;
     height: $size;
-    flex: 0 0 calc((100% - (#{$columns - 1} * #{$gap}) - (2 * #{$padding})) / #{$columns});
     aspect-ratio: 1 / 1;
     box-sizing: border-box;
     min-width: 0;
@@ -41,7 +41,7 @@ body {
     background-color: #eee;
 
     &::before {
-      content: "";
+      content: '';
       font-size: 30px;
       font-weight: normal;
       color: black;
@@ -49,13 +49,13 @@ body {
     }
 
     &:hover {
-      background-color: #FFBFCB;
+      background-color: #ffbfcb;
       transition-duration: 0.5s;
       transform: translateY(-20px);
     }
 
     @each $name, $index in $days {
-      &--start-day--#{$name} {
+      &:first-child {
         margin-left: ($index) * ($size + $gap);
       }
     }
@@ -70,9 +70,6 @@ body {
 
 @for $i from 1 through 31 {
   .calendar__day:nth-child(#{$i})::before {
-    content: "#{$i}";
+    content: '#{$i}';
   }
 }
-
-
-
